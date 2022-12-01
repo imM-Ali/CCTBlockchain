@@ -37,7 +37,7 @@ function checkAccountReq(a) {
         <button id="offerBtn_${a[0]}" class="mt-2 btn btn-primary">Offer</button>
         </form>`;
   } else {
-    return `<h6 class="card-title text-danger">You cannot make on offer on your request</h6>`;
+    return `<h6 class="card-title text-danger">You cannot make an offer on your own request</h6>`;
   }
 }
 
@@ -74,20 +74,10 @@ const viewRequests = async () => {
   });
 };
 
-const startRide = async (rideId) => {
-  const ride = await contract.methods.rides(rideId).call();
-
-  await contract.methods.startRide(ride[0]).send({
-    from: account,
-    to: ride[3],
-    value: ride[2],
-  });
-};
 function checkAccount(a) {
   if (a[3] != account && a[1][3] == account) {
-    return `<button id="startBtn_${a[0]}" class="mt-2 btn btn-primary">Accept</button>
-    <p>This will transfer the funds to the driver</p>
-    <input id="rideIdHolder" value="${a[0]}" hidden>
+    return `<button id="startBtn_${a[0]}" class="mt-2 btn btn-primary" data-id="${a[0]}">Accept</button>
+    <p>This will transfer the funds to the driver</p>    
    `;
   } else {
     return `<h6 class="card-title text-danger">You cannot start this ride</h6>`;
@@ -104,24 +94,34 @@ const viewRides = async () => {
             <div class="card request" style="width: 18rem;">
             <div class="card-body">
             <h6 class="card-title">Offer from Driver: ${ride[3]}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Offered to: ${
-              ride[1][3]
-            }</h6>
-            <p class="card-text">Fare offered: ${ride[2] / 1e18} Ether</p>` +
+            <h6 id="currentRider" class="card-subtitle mb-2 text-muted">Offered to: ${ride[1][3]}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">From: ${ride[1][1]} To:${ride[1][2]}</h6>
+            <h5 class="card-text">Fare offered: ${ride[2] / 1e18} Ether</h5>` +
           checkAccount(ride) +
           `           
             </div>
             </div>            
             `
       );
+      
       ridesEl.appendChild(rideEl);
+      if(account==ride[1][3]){
+        document.getElementById("currentRider").classList.remove("text-muted");
+        document.getElementById("currentRider").classList.add("text-danger");
+      }
     }
   }
 
   ridesEl.querySelectorAll("button").forEach((button) => {
     button.onclick = async (e) => {
-      e.preventDefault();
-      startRide(document.getElementById("rideIdHolder").value);
+      e.preventDefault();     
+      const ride = await contract.methods.rides(e.target.dataset.id).call();     
+    await contract.methods.startRide(ride[0]).send({
+    from: account,
+    to: ride[3],
+    value: ride[2],
+    });
+      
     };
   });
 };
