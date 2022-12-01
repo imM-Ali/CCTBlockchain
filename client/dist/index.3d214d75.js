@@ -597,10 +597,13 @@ const viewRequests = async ()=>{
     });
 };
 function checkAccount(a) {
-    if (a[3] != account && a[1][3] == account) return `<button id="startBtn_${a[0]}" class="mt-2 btn btn-primary" data-id="${a[0]}">Accept</button>
+    if (a[3] != account && a[1][3] == account) return ` <h6 id="currentRider" class="card-subtitle mb-2 text-danger">Offered to: ${a[1][3]}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">From: ${a[1][1]} To:${a[1][2]}</h6> 
+    <button id="startBtn_${a[0]}" class="mt-2 btn btn-primary" data-id="${a[0]}">Accept</button>
     <p>This will transfer the funds to the driver</p>    
    `;
-    else return `<h6 class="card-title text-danger">You cannot start this ride</h6>`;
+    else return `<h6 id="currentRider" class="card-subtitle mb-2 text-muted">Offered to: ${a[1][3]}</h6>
+    <h6 class="card-title text-danger">You cannot start this ride</h6>`;
 }
 const viewRides = async ()=>{
     ridesEl.innerHTML = "";
@@ -612,17 +615,12 @@ const viewRides = async ()=>{
             <div class="card request" style="width: 18rem;">
             <div class="card-body">
             <h6 class="card-title">Offer from Driver: ${ride[3]}</h6>
-            <h6 id="currentRider" class="card-subtitle mb-2 text-muted">Offered to: ${ride[1][3]}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">From: ${ride[1][1]} To:${ride[1][2]}</h6>
+             
             <h5 class="card-text">Fare offered: ${ride[2] / 1e18} Ether</h5>` + checkAccount(ride) + `           
             </div>
             </div>            
             `);
             ridesEl.appendChild(rideEl);
-            if (account == ride[1][3]) {
-                document.getElementById("currentRider").classList.remove("text-muted");
-                document.getElementById("currentRider").classList.add("text-danger");
-            }
         }
     }
     ridesEl.querySelectorAll("button").forEach((button)=>{
@@ -665,6 +663,7 @@ document.getElementById("closeBtn").onclick = (e)=>{
     const destinationLocation = document.getElementById("dLocation").value;
     createRequest(currentLocation, destinationLocation);
     closeModal();
+    location.reload();
 };
 var modal = document.getElementById("exampleModal");
 window.onclick = function(event) {
