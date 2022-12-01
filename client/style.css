@@ -1,0 +1,18 @@
+#header{
+    margin-bottom: 10px;
+}
+#requests{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+#rides{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.request{
+    margin: 0px 2px 15px 2px;
+    width: auto!important;
+}
+
