@@ -64,7 +64,7 @@ const viewRequests = async () => {
     }
   }
 
-  document.querySelectorAll("button").forEach(button => {
+  requestsEl.querySelectorAll("button").forEach(button => {
     button.onclick = async e => {
       e.preventDefault();
       const requestId = e.target.form[1].value;
@@ -119,7 +119,7 @@ const viewRides = async () => {
     }
   }
 
-  document.querySelectorAll("button").forEach(button => {
+  ridesEl.querySelectorAll("button").forEach(button => {
     button.onclick = async e => {
       e.preventDefault();
       startRide(document.getElementById('rideIdHolder').value);
