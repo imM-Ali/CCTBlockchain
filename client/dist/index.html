@@ -1,43 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCT Taxi App</title>
     <link rel="stylesheet" href="/index.3a01df49.css">
-</head>
-<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  </head>
+  <body>
     <nav id="header" class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">CCT Blockchain</a> 
-            <div id="account" class="d-flex">0x0000f</div>
-        </div>
+      <div class="container">
+        <a class="navbar-brand" href="#">CCT Blockchain</a>
+        <div id="account" class="d-flex">Not Connected</div>
+      </div>
     </nav>
     <section id="driverArea">
-    <div class="container mt-4">
+      <div class="container mt-4">
         <h4>Driver Area</h4>
         <h5>People looking for rides</h5>
-    </div>
-    <div class="container mt-2" id="requests">
-
-    </div>
+      </div>
+      <div class="container mt-2" id="requests"></div>
     </section>
 
     <section id="customerArea">
-        <div class="container mt-4">
-            <h4>Customer Area</h4>
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm">
-    Launch demo modal
-</button>
-            <h5>Available offers</h5>
+      <div class="container mt-4">
+        <h4>Customer Area</h4>
+        <button type="button" id="requestBtn" class="btn btn-primary mb-5">
+          Request Ride
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Request a new Ride</h5>                
+              </div>
+              <div class="modal-body">
+                <form role="form" action="">
+                    <input type="hidden" name="_token" value="">
+                    <div class="form-group">
+                        <label class="control-label">Current Location</label>
+                        <div>
+                            <input type="text" class="form-control input-lg" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Destination</label>
+                        <div>
+                            <input type="text" class="form-control input-lg">
+                        </div>
+                    </div>                   
+                   
+                </form>
+                
+                </div>
+              <div class="modal-footer">
+                <button type="button" id="closeBtn" class="btn btn-primary">
+                  Find Driver
+                </button>
+                
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="container mt-2" id="rides">
-    
-    
-        </div>
+        <div class="modal-backdrop fade show" id="backdrop" style="display: none"></div>
+        <h5>Available offers</h5>
+      </div>
+      <div class="container mt-2" id="rides"></div>
     </section>
 
     <script src="/index.3d214d75.js" defer=""></script>
-</body>
+    
+  </body>
 </html>

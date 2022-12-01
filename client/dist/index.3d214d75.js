@@ -644,6 +644,23 @@ const main = async ()=>{
     await viewRides();
 };
 main();
+document.getElementById("requestBtn").onclick = (e)=>{
+    document.getElementById("backdrop").style.display = "block";
+    document.getElementById("exampleModal").style.display = "block";
+    document.getElementById("exampleModal").classList.add("show");
+};
+function closeModal() {
+    document.getElementById("backdrop").style.display = "none";
+    document.getElementById("exampleModal").style.display = "none";
+    document.getElementById("exampleModal").classList.remove("show");
+}
+document.getElementById("closeBtn").onclick = (e)=>{
+    closeModal();
+};
+var modal = document.getElementById("exampleModal");
+window.onclick = function(event) {
+    if (event.target == modal) closeModal();
+};
 
 },{"web3":"caAX1","bootstrap/dist/css/bootstrap.css":"jJvnD","../build/contracts/Taxi.json":"g3bRW","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"caAX1":[function(require,module,exports) {
 !function(e, t) {

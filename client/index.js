@@ -136,3 +136,24 @@ const main = async () => {
   await viewRides();
 };
 main();
+
+document.getElementById('requestBtn').onclick = e => {
+  document.getElementById("backdrop").style.display = "block";
+  document.getElementById("exampleModal").style.display = "block";
+  document.getElementById("exampleModal").classList.add("show");
+}
+
+function closeModal() {
+  document.getElementById("backdrop").style.display = "none"
+  document.getElementById("exampleModal").style.display = "none"
+  document.getElementById("exampleModal").classList.remove("show")
+}
+document.getElementById('closeBtn').onclick = e => {
+  closeModal();
+}
+var modal = document.getElementById("exampleModal");
+window.onclick = function (event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+};
