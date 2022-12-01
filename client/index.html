@@ -29,36 +29,51 @@
         <button type="button" id="requestBtn" class="btn btn-primary mb-5">
           Request Ride
         </button>
-        <div class="modal fade" id="exampleModal"  tabindex="-1" aria-labelledby="exampleModalLabel"  aria-modal="true" role="dialog">
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-modal="true"
+          role="dialog"
+        >
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Request a new Ride</h5>                
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Request a new Ride
+                </h5>
               </div>
               <div class="modal-body">
                 <form role="form" action="">
-                    <input type="hidden" name="_token" value="">
-                    <div class="form-group">
-                        <label class="control-label">Current Location</label>
-                        <div>
-                            <input type="text" class="form-control input-lg"  value="">
-                        </div>
+                  <input type="hidden" name="_token" value="" />
+                  <div class="form-group">
+                    <label class="control-label">Current Location</label>
+                    <div>
+                      <input
+                        id="cLocation"
+                        type="text"
+                        class="form-control input-lg"
+                        value=""
+                      />
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">Destination</label>
-                        <div>
-                            <input type="text" class="form-control input-lg" >
-                        </div>
-                    </div>                   
-                   
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">Destination</label>
+                    <div>
+                      <input
+                        id="dLocation"
+                        type="text"
+                        class="form-control input-lg"
+                      />
+                    </div>
+                  </div>
                 </form>
-                
-                </div>
+              </div>
               <div class="modal-footer">
                 <button type="button" id="closeBtn" class="btn btn-primary">
                   Find Driver
                 </button>
-                
               </div>
             </div>
           </div>
@@ -74,6 +89,5 @@
     </section>
 
     <script type="module" src="index.js"></script>
-    
   </body>
 </html>

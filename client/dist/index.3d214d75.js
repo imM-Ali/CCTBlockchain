@@ -644,6 +644,11 @@ const main = async ()=>{
     await viewRides();
 };
 main();
+const createRequest = async (cLocation, dLocation)=>{
+    await contract.methods.requestRide(cLocation, dLocation).send({
+        from: account
+    });
+};
 document.getElementById("requestBtn").onclick = (e)=>{
     document.getElementById("backdrop").style.display = "block";
     document.getElementById("exampleModal").style.display = "block";
@@ -655,6 +660,9 @@ function closeModal() {
     document.getElementById("exampleModal").classList.remove("show");
 }
 document.getElementById("closeBtn").onclick = (e)=>{
+    const currentLocation = document.getElementById("cLocation").value;
+    const destinationLocation = document.getElementById("dLocation").value;
+    createRequest(currentLocation, destinationLocation);
     closeModal();
 };
 var modal = document.getElementById("exampleModal");
