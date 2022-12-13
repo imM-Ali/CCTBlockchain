@@ -1,0 +1,9 @@
+1) Run Ganache and select the truffle-config file as the config in gaanche project.
+2) Go to /client folder and git bash this command : npm install
+3) Come to main directory and git bash these commands: 
+truffle compile
+truffle deploy
+4) After deployment, git bash into /client folder and use this command:
+npm run start
+
+This will start our application. It will automatically ask for metamask connection. 
